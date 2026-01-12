@@ -1,14 +1,20 @@
 import OpenAI from 'openai';
 import { AIAnalysisResult } from '@/lib/types';
 
+// ビルド時にエラーを避けるため、環境変数がない場合はダミー値を使用
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPENAI_API_KEY || 'dummy-key-for-build',
 });
 
 export async function analyzeJobPosting(
   htmlContent: string,
   url: string
 ): Promise<AIAnalysisResult> {
+  // 環境変数チェック
+  if (!process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY === 'dummy-key-for-build') {
+    throw new Error('OPENAI_API_KEY is not configured. Please set it in your environment variables.');
+  }
+
   try {
     const prompt = `
 あなたは海外の求人情報を解析し、日本人向けに翻訳・整形する専門家です。

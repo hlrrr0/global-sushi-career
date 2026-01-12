@@ -1,18 +1,24 @@
 import { createClient } from 'microcms-js-sdk';
 import { MicroCMSJob, MicroCMSArea } from '@/lib/types';
 
-if (!process.env.MICROCMS_SERVICE_DOMAIN) {
-  throw new Error('MICROCMS_SERVICE_DOMAIN is required');
-}
-
-if (!process.env.MICROCMS_API_KEY) {
-  throw new Error('MICROCMS_API_KEY is required');
-}
+// ビルド時にエラーを避けるため、環境変数がない場合はダミー値を使用
+const serviceDomain = process.env.MICROCMS_SERVICE_DOMAIN || 'dummy-domain';
+const apiKey = process.env.MICROCMS_API_KEY || 'dummy-key';
 
 export const client = createClient({
-  serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
-  apiKey: process.env.MICROCMS_API_KEY,
+  serviceDomain,
+  apiKey,
 });
+
+// 環境変数チェック用のヘルパー関数
+function checkEnvVars() {
+  if (!process.env.MICROCMS_SERVICE_DOMAIN || process.env.MICROCMS_SERVICE_DOMAIN === 'dummy-domain') {
+    throw new Error('MICROCMS_SERVICE_DOMAIN is not configured. Please set it in your environment variables.');
+  }
+  if (!process.env.MICROCMS_API_KEY || process.env.MICROCMS_API_KEY === 'dummy-key') {
+    throw new Error('MICROCMS_API_KEY is not configured. Please set it in your environment variables.');
+  }
+}
 
 // 求人一覧取得
 export const getJobs = async (params?: {
@@ -20,6 +26,7 @@ export const getJobs = async (params?: {
   offset?: number;
   filters?: string;
 }) => {
+  checkEnvVars();
   try {
     const response = await client.get<{
       contents: MicroCMSJob[];
@@ -43,6 +50,7 @@ export const getJobs = async (params?: {
 
 // 求人詳細取得
 export const getJobById = async (id: string) => {
+  checkEnvVars();
   try {
     const job = await client.get<MicroCMSJob>({
       endpoint: 'jobs',
@@ -57,6 +65,7 @@ export const getJobById = async (id: string) => {
 
 // エリア一覧取得
 export const getAreas = async () => {
+  checkEnvVars();
   try {
     const response = await client.get<{
       contents: MicroCMSArea[];
@@ -76,6 +85,7 @@ export const getAreas = async () => {
 
 // エリア詳細取得
 export const getAreaById = async (id: string) => {
+  checkEnvVars();
   try {
     const area = await client.get<MicroCMSArea>({
       endpoint: 'areas',
@@ -98,6 +108,7 @@ export const createJob = async (data: {
   original_url: string;
   status?: 'draft' | 'publish';
 }) => {
+  checkEnvVars();
   try {
     // Management APIを使用する場合は別途設定が必要
     // ここでは通常のclientを使用

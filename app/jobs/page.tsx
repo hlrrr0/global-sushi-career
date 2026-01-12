@@ -2,6 +2,9 @@ import Link from 'next/link';
 import { getJobs } from '@/lib/microcms';
 import { convertMicroCMSJobToJob } from '@/lib/utils/converter';
 
+// 動的レンダリングを強制（ビルド時の環境変数エラーを回避）
+export const dynamic = 'force-dynamic';
+
 export default async function JobsPage({
   searchParams,
 }: {

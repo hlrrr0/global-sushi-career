@@ -3,6 +3,9 @@ import { getJobById } from '@/lib/microcms';
 import { convertMicroCMSJobToJob } from '@/lib/utils/converter';
 import { notFound } from 'next/navigation';
 
+// 動的レンダリングを強制（ビルド時の環境変数エラーを回避）
+export const dynamic = 'force-dynamic';
+
 export default async function JobDetailPage({
   params,
 }: {
