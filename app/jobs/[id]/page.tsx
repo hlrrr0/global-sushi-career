@@ -9,11 +9,14 @@ export const dynamic = 'force-dynamic';
 export default async function JobDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
   try {
+    // Next.js 15では params は Promise
+    const { id } = await params;
+    
     // IDからソース判定 (cms_xxx または agent_xxx)
-    const [source, actualId] = params.id.split('_');
+    const [source, actualId] = id.split('_');
     
     if (source !== 'cms' && source !== 'agent') {
       notFound();
@@ -39,7 +42,7 @@ export default async function JobDetailPage({
         <header className="bg-white border-b border-gray-200">
           <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
             <Link href="/" className="text-2xl font-bold text-gray-900">
-              🍣 World Sushi Career
+              🍣 Global Sushi Career
             </Link>
             <nav className="flex gap-6">
               <Link href="/jobs" className="text-gray-900 hover:text-yellow-600 transition-colors">
@@ -114,9 +117,10 @@ export default async function JobDetailPage({
             {/* 詳細説明 */}
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">求人詳細</h2>
-              <div className="prose max-w-none text-gray-700">
-                {job.content}
-              </div>
+              <div 
+                className="prose max-w-none text-gray-700"
+                dangerouslySetInnerHTML={{ __html: job.content }}
+              />
             </div>
 
             {/* Pick案件の場合は元URLを表示（小さく） */}

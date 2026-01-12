@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { getJobs } from '@/lib/microcms';
-import { convertMicroCMSJobToJob } from '@/lib/utils/converter';
+import { getJobs, getAreas } from '@/lib/microcms';
+import { convertMicroCMSJobToJob, stripHtmlTags } from '@/lib/utils/converter';
+import { convertMicroCMSAreaToArea } from '@/lib/utils/converter';
 
 // 動的レンダリングを強制（ビルド時の環境変数エラーを回避）
 export const dynamic = 'force-dynamic';
@@ -8,30 +9,47 @@ export const dynamic = 'force-dynamic';
 export default async function JobsPage({
   searchParams,
 }: {
-  searchParams: { area?: string; keyword?: string };
+  searchParams: Promise<{ area?: string; keyword?: string }>;
 }) {
   // MicroCMSから求人を取得
-  const { contents: cmsJobs } = await getJobs();
-  const jobs = cmsJobs.map(convertMicroCMSJobToJob);
+  try {
+    // Next.js 15では searchParams は Promise
+    const params = await searchParams;
+    
+    const { contents: cmsJobs } = await getJobs();
+    const cmsAreas = await getAreas();
+    const areas = cmsAreas.map(convertMicroCMSAreaToArea);
+    
+    // データ変換時にエラーがあるものはスキップ
+    const jobs = cmsJobs
+      .map((cmsJob) => {
+        try {
+          return convertMicroCMSJobToJob(cmsJob);
+        } catch (error) {
+          console.error('Failed to convert job:', error);
+          return null;
+        }
+      })
+      .filter((job): job is NonNullable<typeof job> => job !== null);
 
-  // フィルタリング
-  const filteredJobs = jobs.filter((job) => {
-    if (searchParams.area && job.area.id !== searchParams.area) {
-      return false;
-    }
-    if (searchParams.keyword && !job.title.toLowerCase().includes(searchParams.keyword.toLowerCase())) {
-      return false;
-    }
-    return true;
-  });
+    // フィルタリング
+    const filteredJobs = jobs.filter((job) => {
+      if (params.area && job.area.id !== params.area) {
+        return false;
+      }
+      if (params.keyword && !job.title.toLowerCase().includes(params.keyword.toLowerCase())) {
+        return false;
+      }
+      return true;
+    });
 
-  return (
-    <div className="min-h-screen bg-gray-50">
+    return (
+      <div className="min-h-screen bg-gray-50">
       {/* ヘッダー */}
       <header className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold text-gray-900">
-            🍣 World Sushi Career
+            🍣 Global Sushi Career
           </Link>
           <nav className="flex gap-6">
             <Link href="/jobs" className="text-gray-900 hover:text-yellow-600 transition-colors">
@@ -46,7 +64,7 @@ export default async function JobsPage({
 
       <div className="max-w-7xl mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold text-gray-900 mb-8">
-          求人検索 {searchParams.area && `- ${searchParams.area}`}
+          求人検索 {params.area && `- ${params.area}`}
         </h1>
 
         {/* 検索フォーム */}
@@ -56,19 +74,20 @@ export default async function JobsPage({
               type="text"
               name="keyword"
               placeholder="キーワードで検索..."
-              defaultValue={searchParams.keyword}
+              defaultValue={params.keyword}
               className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
             />
             <select
               name="area"
-              defaultValue={searchParams.area}
+              defaultValue={params.area}
               className="px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
             >
               <option value="">すべての国・地域</option>
-              <option value="usa">アメリカ</option>
-              <option value="uk">イギリス</option>
-              <option value="australia">オーストラリア</option>
-              <option value="canada">カナダ</option>
+              {areas.map((area) => (
+                <option key={area.id} value={area.id}>
+                  {area.nameJa}
+                </option>
+              ))}
             </select>
             <button
               type="submit"
@@ -121,7 +140,9 @@ export default async function JobsPage({
                   <p className="text-lg font-semibold text-green-600 mb-3">
                     💰 {job.salaryText}
                   </p>
-                  <p className="text-gray-700 line-clamp-3">{job.content}</p>
+                  <p className="text-gray-700 line-clamp-3">
+                    {stripHtmlTags(job.content)}
+                  </p>
                 </div>
               </Link>
             ))
@@ -129,5 +150,26 @@ export default async function JobsPage({
         </div>
       </div>
     </div>
-  );
+    );
+  } catch (error) {
+    console.error('Error loading jobs:', error);
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">
+            求人情報の取得に失敗しました
+          </h1>
+          <p className="text-gray-600 mb-4">
+            {error instanceof Error ? error.message : '不明なエラーが発生しました'}
+          </p>
+          <Link
+            href="/"
+            className="inline-block px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+          >
+            トップページに戻る
+          </Link>
+        </div>
+      </div>
+    );
+  }
 }

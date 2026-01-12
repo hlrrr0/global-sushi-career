@@ -13,7 +13,7 @@ export default function Home() {
       <header className="bg-black/50 backdrop-blur-sm border-b border-gray-700">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold text-white">
-            🍣 World Sushi Career
+            🍣 Global Sushi Career
           </Link>
           <nav className="flex gap-6">
             <Link href="/jobs" className="text-white hover:text-yellow-400 transition-colors">
@@ -68,10 +68,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-black/30">
+      <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-12 text-center">
-            World Sushi Careerの特徴
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">
+            Global Sushi Careerの特徴
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
@@ -95,7 +95,7 @@ export default function Home() {
 
       <footer className="bg-black border-t border-gray-800 py-8 px-4">
         <div className="max-w-7xl mx-auto text-center text-gray-400">
-          <p>&copy; 2026 World Sushi Career. All rights reserved.</p>
+          <p>&copy; 2026 Global Sushi Career. All rights reserved.</p>
           <div className="mt-4 flex justify-center gap-6">
             <Link href="/privacy" className="hover:text-white transition-colors">
               プライバシーポリシー

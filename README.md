@@ -1,4 +1,4 @@
-# World Sushi Career (Global Sushi Career)
+# Global Sushi Career
 
 海外の寿司職人求人に特化したキュレーション型求人メディア
 

@@ -19,6 +19,12 @@ export function convertAgentJobToJob(agentJob: AgentJob, area: Area): Job {
 
 // MicroCMSのデータをJob型に変換
 export function convertMicroCMSJobToJob(cmsJob: MicroCMSJob): Job {
+  // areaがnullの場合のエラーハンドリング
+  if (!cmsJob.area) {
+    console.error('MicroCMS Job data missing area:', cmsJob);
+    throw new Error(`Job "${cmsJob.title}" (ID: ${cmsJob.id}) has no area assigned. Please check MicroCMS data.`);
+  }
+
   const area: Area = {
     id: cmsJob.area.id,
     name: cmsJob.area.name,
@@ -56,6 +62,11 @@ export function convertMicroCMSAreaToArea(cmsArea: MicroCMSArea): Area {
     flagImage: cmsArea.flagImage?.url,
     exchangeRate: cmsArea.exchangeRate,
   };
+}
+
+// HTMLタグを削除してプレーンテキストに変換
+export function stripHtmlTags(html: string): string {
+  return html.replace(/<[^>]*>/g, '').trim();
 }
 
 // ロケーション文字列から都市名を抽出

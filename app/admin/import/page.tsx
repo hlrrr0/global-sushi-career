@@ -1,7 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AIAnalysisResult } from '@/lib/types';
+
+interface Area {
+  id: string;
+  name: string;
+  nameJa: string;
+}
 
 export default function AdminImportPage() {
   const [url, setUrl] = useState('');
@@ -11,6 +17,7 @@ export default function AdminImportPage() {
   const [analysis, setAnalysis] = useState<AIAnalysisResult | null>(null);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [areas, setAreas] = useState<Area[]>([]);
 
   // フォーム用の状態
   const [title, setTitle] = useState('');
@@ -18,6 +25,22 @@ export default function AdminImportPage() {
   const [salaryText, setSalaryText] = useState('');
   const [content, setContent] = useState('');
   const [areaId, setAreaId] = useState('');
+
+  // エリア一覧を取得
+  useEffect(() => {
+    const fetchAreas = async () => {
+      try {
+        const response = await fetch('/api/areas');
+        const data = await response.json();
+        if (data.areas) {
+          setAreas(data.areas);
+        }
+      } catch (err) {
+        console.error('Failed to fetch areas:', err);
+      }
+    };
+    fetchAreas();
+  }, []);
 
   const handleAnalyze = async () => {
     if (!url) {
@@ -204,12 +227,11 @@ export default function AdminImportPage() {
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="">選択してください</option>
-                  <option value="usa">アメリカ (USA)</option>
-                  <option value="uk">イギリス (UK)</option>
-                  <option value="australia">オーストラリア</option>
-                  <option value="canada">カナダ</option>
-                  <option value="korea">韓国</option>
-                  {/* MicroCMSのエリアマスタから動的に取得する実装が必要 */}
+                  {areas.map((area) => (
+                    <option key={area.id} value={area.id}>
+                      {area.nameJa} ({area.name})
+                    </option>
+                  ))}
                 </select>
                 <p className="mt-1 text-sm text-gray-500">
                   推測: {analysis.country}
