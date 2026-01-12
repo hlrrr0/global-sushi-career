@@ -98,8 +98,15 @@ export default function ForBusinessPage() {
       </section>
 
       {/* Current Issues: 採用課題への共感 */}
-      <section className="py-20 px-6 bg-gray-50">
-        <div className="max-w-5xl mx-auto">
+      <section className="py-20 px-6 bg-gray-50 relative overflow-hidden">
+        {/* 背景画像 - 寿司職人の修行風景 */}
+        <div 
+          className="absolute inset-0 opacity-5 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=1920&q=80)',
+          }}
+        />
+        <div className="max-w-5xl mx-auto relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
             こんな採用の<span className="text-[#D4AF37]">お悩み</span>はありませんか？
           </h2>
@@ -142,8 +149,15 @@ export default function ForBusinessPage() {
       </section>
 
       {/* Our Solution: 選ばれる3つの理由 */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-20 px-6 bg-white relative overflow-hidden">
+        {/* 背景画像 - 寿司カウンター */}
+        <div 
+          className="absolute inset-0 opacity-5 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=1920&q=80)',
+          }}
+        />
+        <div className="max-w-6xl mx-auto relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
             Global Sushi Career が<span className="text-[#D4AF37]">選ばれる理由</span>
           </h2>
@@ -199,8 +213,15 @@ export default function ForBusinessPage() {
       </section>
 
       {/* Database: 登録人材のイメージ */}
-      <section className="py-20 px-6 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-20 px-6 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
+        {/* 背景画像 - 世界地図/グローバル */}
+        <div 
+          className="absolute inset-0 opacity-10 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=1920&q=80)',
+          }}
+        />
+        <div className="max-w-6xl mx-auto relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
             登録人材の<span className="text-[#D4AF37]">イメージ</span>
           </h2>
@@ -316,8 +337,15 @@ export default function ForBusinessPage() {
       </section>
 
       {/* Pricing: 料金体系 */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
+      <section className="py-20 px-6 bg-white relative overflow-hidden">
+        {/* 背景画像 - 高級レストラン */}
+        <div 
+          className="absolute inset-0 opacity-5 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&q=80)',
+          }}
+        />
+        <div className="max-w-4xl mx-auto relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
             <span className="text-[#D4AF37]">シンプル</span>な料金体系
           </h2>
@@ -360,8 +388,15 @@ export default function ForBusinessPage() {
       </section>
 
       {/* Flow: 採用までの流れ */}
-      <section className="py-20 px-6 bg-gray-50">
-        <div className="max-w-5xl mx-auto">
+      <section className="py-20 px-6 bg-gray-50 relative overflow-hidden">
+        {/* 背景画像 - 寿司職人の手元 */}
+        <div 
+          className="absolute inset-0 opacity-5 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=1920&q=80)',
+          }}
+        />
+        <div className="max-w-5xl mx-auto relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
             採用までの<span className="text-[#D4AF37]">流れ</span>
           </h2>
@@ -426,8 +461,15 @@ export default function ForBusinessPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
+      <section className="py-20 px-6 bg-white relative overflow-hidden">
+        {/* 背景画像 - 国際的なビジネスシーン */}
+        <div 
+          className="absolute inset-0 opacity-5 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1920&q=80)',
+          }}
+        />
+        <div className="max-w-4xl mx-auto relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
             よくある<span className="text-[#D4AF37]">ご質問</span>
           </h2>
