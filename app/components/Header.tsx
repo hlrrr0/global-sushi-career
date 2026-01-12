@@ -13,15 +13,20 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center bg-white px-3 py-1 rounded">
+          <Link href="/" className="flex items-center gap-3">
             <Image
-              src="/logo.png"
-              alt="Global Sushi Career"
-              width={180}
+              src="/icon.png"
+              alt="Global Sushi Career Icon"
+              width={40}
               height={40}
-              className="h-10 w-auto"
+              className="w-10 h-10"
               priority
             />
+            <span className="text-2xl font-bold">
+              <span className="text-red-600">Global</span>
+              <span className="text-white"> Sushi </span>
+              <span className="text-[#D4AF37]">Career</span>
+            </span>
           </Link>
 
           {/* Desktop Navigation */}

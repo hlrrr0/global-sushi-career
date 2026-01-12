@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Global Sushi Career - 海外の寿司職人求人",
   description: "海外で働く寿司職人のための求人プラットフォーム。AI自動解析で世界中の寿司職人求人を簡単検索。",
+  icons: {
+    icon: '/icon.png',
+  },
 };
 
 export default function RootLayout({

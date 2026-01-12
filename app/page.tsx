@@ -65,15 +65,20 @@ export default async function Home() {
       {/* ヘッダー */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center bg-white px-3 py-1 rounded">
+          <Link href="/" className="flex items-center gap-3">
             <Image
-              src="/logo.png"
-              alt="Global Sushi Career"
-              width={180}
+              src="/icon.png"
+              alt="Global Sushi Career Icon"
+              width={40}
               height={40}
-              className="h-10 w-auto"
+              className="w-10 h-10"
               priority
             />
+            <span className="text-2xl font-bold">
+              <span className="text-red-600">Global</span>
+              <span className="text-white"> Sushi </span>
+              <span className="text-[#D4AF37]">Career</span>
+            </span>
           </Link>
           <nav className="hidden md:flex gap-8">
             <Link href="/about" className="text-gray-300 hover:text-[#D4AF37] transition-colors">
