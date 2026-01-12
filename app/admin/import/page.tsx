@@ -285,22 +285,106 @@ export default function AdminImportPage() {
                 <summary className="cursor-pointer font-medium text-gray-700">
                   AI解析の詳細情報を表示
                 </summary>
-                <div className="mt-4 space-y-2 text-sm">
-                  <p>
-                    <strong>原文タイトル:</strong> {analysis.title}
-                  </p>
-                  <p>
-                    <strong>原文説明:</strong> {analysis.description}
-                  </p>
-                  {analysis.requirements && (
-                    <p>
-                      <strong>募集要項:</strong> {analysis.requirements}
-                    </p>
+                <div className="mt-4 space-y-3 text-sm">
+                  <div>
+                    <strong className="text-blue-700">📝 原文タイトル:</strong>
+                    <p className="mt-1 text-gray-700">{analysis.title}</p>
+                  </div>
+
+                  {analysis.position && (
+                    <div>
+                      <strong className="text-blue-700">👔 ポジション:</strong>
+                      <p className="mt-1 text-gray-700">{analysis.position}</p>
+                    </div>
                   )}
+
+                  {analysis.experienceLevel && (
+                    <div>
+                      <strong className="text-blue-700">📊 経験レベル:</strong>
+                      <p className="mt-1 text-gray-700">{analysis.experienceLevel}</p>
+                    </div>
+                  )}
+
+                  {analysis.location && (
+                    <div>
+                      <strong className="text-blue-700">📍 詳細住所:</strong>
+                      <p className="mt-1 text-gray-700">{analysis.location}</p>
+                    </div>
+                  )}
+
+                  {analysis.restaurantName && (
+                    <div>
+                      <strong className="text-blue-700">🏪 レストラン名:</strong>
+                      <p className="mt-1 text-gray-700">{analysis.restaurantName}</p>
+                    </div>
+                  )}
+
+                  {analysis.restaurantType && (
+                    <div>
+                      <strong className="text-blue-700">🍽️ お店のタイプ:</strong>
+                      <p className="mt-1 text-gray-700">{analysis.restaurantType}</p>
+                    </div>
+                  )}
+
+                  <div>
+                    <strong className="text-blue-700">📄 原文説明:</strong>
+                    <p className="mt-1 text-gray-700 whitespace-pre-wrap">{analysis.description}</p>
+                  </div>
+
+                  {analysis.requirements && (
+                    <div>
+                      <strong className="text-blue-700">✅ 応募資格:</strong>
+                      <div className="mt-1 text-gray-700" dangerouslySetInnerHTML={{ __html: analysis.requirements }} />
+                    </div>
+                  )}
+
+                  {analysis.preferred && (
+                    <div>
+                      <strong className="text-blue-700">⭐ 望ましいスキル:</strong>
+                      <div className="mt-1 text-gray-700" dangerouslySetInnerHTML={{ __html: analysis.preferred }} />
+                    </div>
+                  )}
+
                   {analysis.benefits && (
-                    <p>
-                      <strong>福利厚生:</strong> {analysis.benefits}
-                    </p>
+                    <div>
+                      <strong className="text-blue-700">🎁 福利厚生:</strong>
+                      <div className="mt-1 text-gray-700" dangerouslySetInnerHTML={{ __html: analysis.benefits }} />
+                    </div>
+                  )}
+
+                  {analysis.visaSupport && (
+                    <div>
+                      <strong className="text-blue-700">🛂 ビザサポート:</strong>
+                      <p className="mt-1 text-gray-700">{analysis.visaSupport}</p>
+                    </div>
+                  )}
+
+                  {analysis.housingSupport && (
+                    <div>
+                      <strong className="text-blue-700">🏠 住居サポート:</strong>
+                      <p className="mt-1 text-gray-700">{analysis.housingSupport}</p>
+                    </div>
+                  )}
+
+                  {analysis.workingHours && (
+                    <div>
+                      <strong className="text-blue-700">⏰ 勤務時間:</strong>
+                      <p className="mt-1 text-gray-700">{analysis.workingHours}</p>
+                    </div>
+                  )}
+
+                  {analysis.holidays && (
+                    <div>
+                      <strong className="text-blue-700">🏖️ 休日:</strong>
+                      <p className="mt-1 text-gray-700">{analysis.holidays}</p>
+                    </div>
+                  )}
+
+                  {analysis.startDate && (
+                    <div>
+                      <strong className="text-blue-700">📅 勤務開始日:</strong>
+                      <p className="mt-1 text-gray-700">{analysis.startDate}</p>
+                    </div>
                   )}
                 </div>
               </details>
