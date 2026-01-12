@@ -149,19 +149,23 @@ export default function ForBusinessPage() {
       </section>
 
       {/* Our Solution: 選ばれる3つの理由 */}
-      <section className="py-20 px-6 bg-white relative overflow-hidden">
+      <section className="py-20 px-6 bg-gradient-to-br from-slate-900 via-slate-800 to-black relative overflow-hidden">
         {/* 背景画像 - 寿司カウンター */}
         <div 
-          className="absolute inset-0 opacity-5 bg-cover bg-center"
+          className="absolute inset-0 opacity-10 bg-cover bg-center"
           style={{
             backgroundImage: 'url(https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=1920&q=80)',
           }}
         />
+        {/* 装飾 */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        
         <div className="max-w-6xl mx-auto relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-white">
             Global Sushi Career が<span className="text-[#D4AF37]">選ばれる理由</span>
           </h2>
-          <p className="text-center text-gray-600 mb-16">Our Solution</p>
+          <p className="text-center text-gray-400 mb-16">Our Solution</p>
 
           <div className="grid md:grid-cols-3 gap-10">
             {/* 1. 寿司職人特化型 */}
@@ -171,11 +175,11 @@ export default function ForBusinessPage() {
                   🍣
                 </div>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              <h3 className="text-2xl font-bold text-white mb-4">
                 寿司職人・特化型データベース
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                「和食全般」ではなく「寿司」に特化。カウンター業務や魚の扱いに長けた人材のみが集まるため、<span className="font-bold">技術ミスマッチが極小</span>。
+              <p className="text-gray-300 leading-relaxed">
+                「和食全般」ではなく「寿司」に特化。カウンター業務や魚の扱いに長けた人材のみが集まるため、<span className="font-bold text-white">技術ミスマッチが極小</span>。
               </p>
             </div>
 
@@ -186,11 +190,11 @@ export default function ForBusinessPage() {
                   ✓
                 </div>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              <h3 className="text-2xl font-bold text-white mb-4">
                 スキルと語学の可視化<br />(Visa Ready)
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                技術年数だけでなく、「英語力」「海外就労意欲」でスクリーニング済み。<span className="font-bold">ビザ取得可能性の高い人材のみ</span>をご紹介。
+              <p className="text-gray-300 leading-relaxed">
+                技術年数だけでなく、「英語力」「海外就労意欲」でスクリーニング済み。<span className="font-bold text-white">ビザ取得可能性の高い人材のみ</span>をご紹介。
               </p>
             </div>
 
@@ -201,11 +205,11 @@ export default function ForBusinessPage() {
                   ¥0
                 </div>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              <h3 className="text-2xl font-bold text-white mb-4">
                 完全成功報酬<br />(No Cure, No Pay)
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                求人掲載は無料。何名面接しても無料。費用発生は<span className="font-bold">「採用決定時」のみ</span>。掛け捨てリスク一切なし。
+              <p className="text-gray-300 leading-relaxed">
+                求人掲載は無料。何名面接しても無料。費用発生は<span className="font-bold text-white">「採用決定時」のみ</span>。掛け捨てリスク一切なし。
               </p>
             </div>
           </div>
@@ -388,19 +392,23 @@ export default function ForBusinessPage() {
       </section>
 
       {/* Flow: 採用までの流れ */}
-      <section className="py-20 px-6 bg-gray-50 relative overflow-hidden">
+      <section className="py-20 px-6 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 relative overflow-hidden">
         {/* 背景画像 - 寿司職人の手元 */}
         <div 
-          className="absolute inset-0 opacity-5 bg-cover bg-center"
+          className="absolute inset-0 opacity-10 bg-cover bg-center"
           style={{
             backgroundImage: 'url(https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=1920&q=80)',
           }}
         />
+        {/* 装飾 */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+        
         <div className="max-w-5xl mx-auto relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-white">
             採用までの<span className="text-[#D4AF37]">流れ</span>
           </h2>
-          <p className="text-center text-gray-600 mb-12">Recruitment Flow</p>
+          <p className="text-center text-gray-400 mb-12">Recruitment Flow</p>
 
           <div className="relative">
             {/* 縦線 */}
@@ -449,9 +457,9 @@ export default function ForBusinessPage() {
                   <div className={`flex-shrink-0 w-16 h-16 bg-gradient-to-br ${flow.color} rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg relative z-10`}>
                     {flow.step}
                   </div>
-                  <div className="flex-1 bg-white rounded-xl p-6 shadow-md border-2 border-gray-200">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{flow.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{flow.description}</p>
+                  <div className="flex-1 bg-slate-800/80 backdrop-blur-sm rounded-xl p-6 shadow-md border-2 border-slate-700 hover:border-[#D4AF37] transition-colors">
+                    <h3 className="text-xl font-bold text-white mb-2">{flow.title}</h3>
+                    <p className="text-gray-300 leading-relaxed">{flow.description}</p>
                   </div>
                 </div>
               ))}
