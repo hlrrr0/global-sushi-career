@@ -78,6 +78,9 @@ export default async function Home() {
             <Link href="/jobs" className="text-gray-300 hover:text-[#D4AF37] transition-colors">
               求人一覧
             </Link>
+            <Link href="/for-business" className="text-gray-300 hover:text-[#D4AF37] transition-colors">
+              採用企業様
+            </Link>
             <a href="#contact" className="text-gray-300 hover:text-[#D4AF37] transition-colors">
               キャリア相談
             </a>

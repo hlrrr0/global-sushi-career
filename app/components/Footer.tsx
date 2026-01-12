@@ -35,6 +35,11 @@ export default function Footer() {
                   About
                 </Link>
               </li>
+              <li>
+                <Link href="/for-business" className="hover:text-[#D4AF37] transition-colors">
+                  採用企業様
+                </Link>
+              </li>
             </ul>
           </div>
 

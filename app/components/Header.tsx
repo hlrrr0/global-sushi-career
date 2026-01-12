@@ -24,6 +24,9 @@ export default function Header() {
             <Link href="/about" className="text-gray-300 hover:text-[#D4AF37] transition-colors">
               About
             </Link>
+            <Link href="/for-business" className="text-gray-300 hover:text-[#D4AF37] transition-colors">
+              採用企業様
+            </Link>
             <a
               href={lineUrl}
               target="_blank"
@@ -68,6 +71,13 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 About
+              </Link>
+              <Link 
+                href="/for-business" 
+                className="text-gray-300 hover:text-[#D4AF37] transition-colors px-2 py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                採用企業様
               </Link>
               <a
                 href={lineUrl}
