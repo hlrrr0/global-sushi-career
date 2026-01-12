@@ -208,6 +208,7 @@ export default function AdminImportPage() {
                   <option value="uk">イギリス (UK)</option>
                   <option value="australia">オーストラリア</option>
                   <option value="canada">カナダ</option>
+                  <option value="korea">韓国</option>
                   {/* MicroCMSのエリアマスタから動的に取得する実装が必要 */}
                 </select>
                 <p className="mt-1 text-sm text-gray-500">

@@ -110,28 +110,42 @@ export const createJob = async (data: {
 }) => {
   checkEnvVars();
   try {
-    // Management APIを使用する場合は別途設定が必要
-    // ここでは通常のclientを使用
-    const response = await fetch(
-      `https://${process.env.MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1/jobs`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-MICROCMS-API-KEY': process.env.MICROCMS_API_KEY || '',
-        },
-        body: JSON.stringify({
-          ...data,
-          status: data.status || 'draft',
-        }),
-      }
-    );
+    const serviceDomain = process.env.MICROCMS_SERVICE_DOMAIN;
+    const apiKey = process.env.MICROCMS_API_KEY;
+
+    // MicroCMSのコンテンツデータ（statusは含めない）
+    const contentData = {
+      title: data.title,
+      area: data.area,
+      city: data.city,
+      salary_text: data.salary_text,
+      content: data.content,
+      original_url: data.original_url,
+    };
+
+    // statusパラメータをクエリに追加
+    const statusParam = data.status === 'publish' ? 'status=publish' : 'status=draft';
+    const url = `https://${serviceDomain}.microcms.io/api/v1/jobs?${statusParam}`;
+
+    console.log('Creating job in MicroCMS:', { url, contentData });
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-MICROCMS-API-KEY': apiKey || '',
+      },
+      body: JSON.stringify(contentData),
+    });
+
+    const responseText = await response.text();
+    console.log('MicroCMS Response:', response.status, responseText);
 
     if (!response.ok) {
-      throw new Error(`Failed to create job: ${response.statusText}`);
+      throw new Error(`Failed to create job: ${response.status} ${response.statusText} - ${responseText}`);
     }
 
-    return await response.json();
+    return JSON.parse(responseText);
   } catch (error) {
     console.error('Error creating job in MicroCMS:', error);
     throw error;
