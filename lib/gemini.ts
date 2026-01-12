@@ -16,7 +16,8 @@ export async function analyzeJobPosting(
   }
 
   try {
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    // gemini-2.5-flash: 最新の高速モデル (2026年1月時点)
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
     const prompt = `
 あなたは海外の求人情報を解析し、日本人向けに翻訳・整形する専門家です。
@@ -79,7 +80,8 @@ export async function translateText(text: string, targetLang = 'ja'): Promise<st
   }
 
   try {
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    // gemini-2.5-flash: 最新の高速モデル
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
     const prompt = `Translate the following text to ${targetLang}. Keep it professional and appealing for Japanese sushi chefs. Return only the translated text without any additional explanation.
 

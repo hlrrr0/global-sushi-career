@@ -15,7 +15,7 @@
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **CMS**: MicroCMS
-- **AI**: Google Gemini AI (gemini-1.5-flash)
+- **AI**: Google Gemini AI (gemini-2.5-flash)
 - **Hosting**: Vercel
 
 ## 📁 プロジェクト構成
