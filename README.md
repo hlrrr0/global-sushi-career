@@ -15,7 +15,7 @@
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **CMS**: MicroCMS
-- **AI**: OpenAI API (gpt-4o-mini)
+- **AI**: Google Gemini AI (gemini-1.5-flash)
 - **Hosting**: Vercel
 
 ## 📁 プロジェクト構成
@@ -37,7 +37,7 @@
 │   ├── types/
 │   │   └── index.ts          # 型定義
 │   ├── microcms.ts           # MicroCMS SDK
-│   ├── openai.ts             # OpenAI連携
+│   ├── gemini.ts             # Google Gemini AI連携
 │   ├── scraper.ts            # Webスクレイピング
 │   └── utils/
 │       └── converter.ts      # データ変換
@@ -56,8 +56,8 @@
 MICROCMS_SERVICE_DOMAIN=your-service-domain
 MICROCMS_API_KEY=your-api-key
 
-# OpenAI
-OPENAI_API_KEY=your-openai-api-key
+# Google Gemini AI
+GEMINI_API_KEY=your-gemini-api-key
 
 # Agent System API
 AGENT_SYSTEM_API_URL=https://api.example.com
@@ -145,7 +145,7 @@ npm run dev
 - 型定義
 
 ### Phase 2: AIツール実装 ✅
-- OpenAI API連携
+- Google Gemini AI連携
 - スクレイピング機能
 - 管理画面UI
 
@@ -180,7 +180,7 @@ npm run dev
 ```bash
 # 環境変数をVercelに設定
 vercel env add MICROCMS_API_KEY
-vercel env add OPENAI_API_KEY
+vercel env add GEMINI_API_KEY
 # ... その他の環境変数も同様に
 ```
 

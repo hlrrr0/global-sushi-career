@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { scrapeWebsite } from '@/lib/scraper';
-import { analyzeJobPosting } from '@/lib/openai';
+import { analyzeJobPosting } from '@/lib/gemini';
 
 export async function POST(request: NextRequest) {
   try {
