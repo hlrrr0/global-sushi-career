@@ -25,14 +25,14 @@ export default async function Home() {
   }
 
   const areaButtons = [
-    { flag: '🇺🇸', name: 'アメリカ', country: 'usa', jobs: 45 },
-    { flag: '🇬🇧', name: 'イギリス', country: 'uk', jobs: 23 },
-    { flag: '🇦🇺', name: 'オーストラリア', country: 'australia', jobs: 18 },
-    { flag: '🇨🇦', name: 'カナダ', country: 'canada', jobs: 15 },
-    { flag: '🇸🇬', name: 'シンガポール', country: 'singapore', jobs: 12 },
-    { flag: '🇦🇪', name: 'ドバイ・UAE', country: 'uae', jobs: 8 },
-    { flag: '🇪🇺', name: 'ヨーロッパ全域', region: 'europe', jobs: 31 },
-    { flag: '🌏', name: 'アジアその他', region: 'asia', jobs: 20 },
+    { flag: '🇺🇸', name: 'アメリカ', country: 'usa', jobs: 45, color: 'from-red-900/20 to-slate-900 hover:border-red-500' },
+    { flag: '🇬🇧', name: 'イギリス', country: 'uk', jobs: 23, color: 'from-blue-900/20 to-slate-900 hover:border-blue-500' },
+    { flag: '🇦🇺', name: 'オーストラリア', country: 'australia', jobs: 18, color: 'from-green-900/20 to-slate-900 hover:border-green-500' },
+    { flag: '🇨🇦', name: 'カナダ', country: 'canada', jobs: 15, color: 'from-purple-900/20 to-slate-900 hover:border-purple-500' },
+    { flag: '🇸🇬', name: 'シンガポール', country: 'singapore', jobs: 12, color: 'from-pink-900/20 to-slate-900 hover:border-pink-500' },
+    { flag: '🇦🇪', name: 'ドバイ・UAE', country: 'uae', jobs: 8, color: 'from-amber-900/20 to-slate-900 hover:border-amber-500' },
+    { flag: '🇪🇺', name: 'ヨーロッパ全域', region: 'europe', jobs: 31, color: 'from-cyan-900/20 to-slate-900 hover:border-cyan-500' },
+    { flag: '🌏', name: 'アジアその他', region: 'asia', jobs: 20, color: 'from-orange-900/20 to-slate-900 hover:border-orange-500' },
   ];
 
   const interviews = [
@@ -89,8 +89,18 @@ export default async function Home() {
 
       {/* メインビジュアル - Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-slate-900 to-black"></div>
-        <div className="absolute inset-0 opacity-20">
+        {/* 背景画像 - 寿司職人の手元 */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=1920&q=80)',
+          }}
+        />
+        {/* オーバーレイ */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80"></div>
+        
+        {/* グリッド背景 */}
+        <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] bg-repeat"></div>
         </div>
 
@@ -134,40 +144,47 @@ export default async function Home() {
       </section>
 
       {/* 3つの強み - USP */}
-      <section className="py-20 px-4 bg-gradient-to-br from-amber-900/20 via-slate-800 to-slate-900 relative overflow-hidden">
+      <section className="py-20 px-4 bg-white relative overflow-hidden">
+        {/* 背景画像 - 寿司 */}
+        <div 
+          className="absolute inset-0 opacity-5 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=1920&q=80)',
+          }}
+        />
         {/* 装飾的な背景要素 */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-[#D4AF37]/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-[#D4AF37]/5 rounded-full blur-3xl"></div>
         
         <div className="max-w-7xl mx-auto relative z-10">
           <h2 className="text-4xl font-bold text-center mb-16">
             <span className="text-[#D4AF37]">3つの</span>
-            <span className="text-white">強み</span>
+            <span className="text-gray-900">強み</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="text-center group bg-black/40 backdrop-blur-sm rounded-2xl p-8 border border-gray-800 hover:border-[#D4AF37]/50 transition-all">
+            <div className="text-center group bg-white rounded-2xl p-8 border-2 border-gray-200 hover:border-[#D4AF37] transition-all shadow-lg hover:shadow-2xl">
               <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform">🍣</div>
-              <h3 className="text-2xl font-bold text-white mb-4">寿司業界・独占特化</h3>
-              <p className="text-gray-400 leading-relaxed">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">寿司業界・独占特化</h3>
+              <p className="text-gray-600 leading-relaxed">
                 「和食全般」ではなく「寿司」に特化。<br />
                 カウンターでの所作や技術を正当に評価する<br />
                 ハイクラス求人のみを厳選。
               </p>
             </div>
-            <div className="text-center group bg-black/40 backdrop-blur-sm rounded-2xl p-8 border border-gray-800 hover:border-[#D4AF37]/50 transition-all">
+            <div className="text-center group bg-white rounded-2xl p-8 border-2 border-gray-200 hover:border-[#D4AF37] transition-all shadow-lg hover:shadow-2xl">
               <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform">🌍</div>
-              <h3 className="text-2xl font-bold text-white mb-4">世界中から厳選</h3>
-              <p className="text-gray-400 leading-relaxed">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">世界中から厳選</h3>
+              <p className="text-gray-600 leading-relaxed">
                 AIと運営チームが審査した<br />
                 「好条件・ビザサポート有」の案件のみ掲載。<br />
                 妥協のない求人だけをお届けします。
               </p>
             </div>
-            <div className="text-center group bg-black/40 backdrop-blur-sm rounded-2xl p-8 border border-gray-800 hover:border-[#D4AF37]/50 transition-all">
+            <div className="text-center group bg-white rounded-2xl p-8 border-2 border-gray-200 hover:border-[#D4AF37] transition-all shadow-lg hover:shadow-2xl">
               <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform">👨‍🍳</div>
-              <h3 className="text-2xl font-bold text-white mb-4">現役海外シェフの情報網</h3>
-              <p className="text-gray-400 leading-relaxed">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">現役海外シェフの情報網</h3>
+              <p className="text-gray-600 leading-relaxed">
                 世界中で活躍する日本人シェフから提供される、<br />
                 現地のリアルな生活・治安情報。<br />
                 安心して挑戦できる環境を。
@@ -179,6 +196,13 @@ export default async function Home() {
 
       {/* 国・地域から探す */}
       <section id="areas" className="py-20 px-4 bg-gradient-to-b from-slate-900 via-teal-950/30 to-slate-900 relative">
+        {/* 背景画像 - 世界地図/都市 */}
+        <div 
+          className="absolute inset-0 opacity-10 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=1920&q=80)',
+          }}
+        />
         {/* 装飾 */}
         <div className="absolute top-0 left-1/4 w-72 h-72 bg-teal-500/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl"></div>
@@ -191,62 +215,54 @@ export default async function Home() {
           <p className="text-center text-gray-400 mb-12">あなたの次のステージを選んでください</p>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {areaButtons.map((area, index) => {
-              // 各エリアごとに異なるアクセントカラーを設定
-              const colors = [
-                'from-red-900/20 to-slate-900 hover:border-red-500',
-                'from-blue-900/20 to-slate-900 hover:border-blue-500',
-                'from-green-900/20 to-slate-900 hover:border-green-500',
-                'from-purple-900/20 to-slate-900 hover:border-purple-500',
-                'from-pink-900/20 to-slate-900 hover:border-pink-500',
-                'from-amber-900/20 to-slate-900 hover:border-amber-500',
-                'from-cyan-900/20 to-slate-900 hover:border-cyan-500',
-                'from-orange-900/20 to-slate-900 hover:border-orange-500',
-              ];
-              const colorClass = colors[index % colors.length];
-              
-              return (
-                <Link
-                  key={index}
-                  href={`/jobs?${area.country ? `area=${area.country}` : `region=${area.region}`}`}
-                  className={`group relative bg-gradient-to-br ${colorClass} border-2 border-slate-700 rounded-xl p-6 transition-all hover:scale-105 hover:shadow-xl`}
-                >
-                  <div className="text-5xl mb-3">{area.flag}</div>
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#D4AF37] transition-colors">
-                    {area.name}
-                  </h3>
-                  <p className="text-gray-400 text-sm">{area.jobs}件の求人</p>
-                </Link>
-              );
-            })}
+            {areaButtons.map((area) => (
+              <Link
+                key={area.country || area.region}
+                href={`/jobs?${area.country ? `area=${area.country}` : `region=${area.region}`}`}
+                className={`group relative bg-gradient-to-br ${area.color} border-2 border-slate-700 rounded-xl p-6 transition-all hover:scale-105 hover:shadow-xl`}
+              >
+                <div className="text-5xl mb-3">{area.flag}</div>
+                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#D4AF37] transition-colors">
+                  {area.name}
+                </h3>
+                <p className="text-gray-400 text-sm">{area.jobs}件の求人</p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
       {/* 新着・注目求人 */}
       {latestJobs.length > 0 && (
-        <section className="py-20 px-4 bg-gradient-to-br from-indigo-950/40 via-slate-900 to-purple-950/40 relative">
+        <section className="py-20 px-4 bg-white relative">
+          {/* 背景画像 - 高級レストラン */}
+          <div 
+            className="absolute inset-0 opacity-5 bg-cover bg-center"
+            style={{
+              backgroundImage: 'url(https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1920&q=80)',
+            }}
+          />
           {/* 装飾 */}
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSA2MCAwIEwgMCAwIDAgNjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzU1NTVGRiIgc3Ryb2tlLXdpZHRoPSIwLjUiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-10"></div>
-          <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/15 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-500/15 rounded-full blur-3xl"></div>
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSA2MCAwIEwgMCAwIDAgNjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0VFRUVFRSIgc3Ryb2tlLXdpZHRoPSIwLjUiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-500/5 rounded-full blur-3xl"></div>
           
           <div className="max-w-7xl mx-auto relative z-10">
             <h2 className="text-4xl font-bold text-center mb-4">
               <span className="text-[#D4AF37]">新着</span>
-              <span className="text-white">・注目求人</span>
+              <span className="text-gray-900">・注目求人</span>
             </h2>
-            <p className="text-center text-gray-400 mb-12">最新の厳選求人をチェック</p>
+            <p className="text-center text-gray-600 mb-12">最新の厳選求人をチェック</p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
               {latestJobs.map((job) => (
                 <Link
                   key={job.id}
                   href={`/jobs/${job.id}`}
-                  className="group bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl overflow-hidden border border-slate-700 hover:border-[#D4AF37] transition-all hover:scale-105 hover:shadow-2xl hover:shadow-[#D4AF37]/20"
+                  className="group bg-white rounded-xl overflow-hidden border-2 border-gray-200 hover:border-[#D4AF37] transition-all hover:scale-105 hover:shadow-2xl"
                 >
                   {job.mainImage && (
-                    <div className="h-40 overflow-hidden bg-slate-800">
+                    <div className="h-40 overflow-hidden bg-gray-100">
                       <img
                         src={job.mainImage}
                         alt={job.title}
@@ -265,10 +281,10 @@ export default async function Home() {
                         </span>
                       ))}
                     </div>
-                    <h3 className="text-lg font-bold text-white mb-2 line-clamp-2 group-hover:text-[#D4AF37] transition-colors">
+                    <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-[#D4AF37] transition-colors">
                       {job.title}
                     </h3>
-                    <p className="text-gray-400 text-sm mb-2">
+                    <p className="text-gray-600 text-sm mb-2">
                       📍 {job.area.nameJa} - {job.city}
                     </p>
                     <p className="text-[#D4AF37] font-bold text-lg">
@@ -293,6 +309,13 @@ export default async function Home() {
 
       {/* 先輩職人の声 */}
       <section className="py-20 px-4 bg-gradient-to-br from-orange-950/20 via-slate-900 to-rose-950/20 relative overflow-hidden">
+        {/* 背景画像 - 寿司職人 */}
+        <div 
+          className="absolute inset-0 opacity-10 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=1920&q=80)',
+          }}
+        />
         {/* 背景装飾 */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#D4AF37]/10 rounded-full blur-3xl"></div>
         <div className="absolute top-0 left-0 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl"></div>
@@ -326,38 +349,45 @@ export default async function Home() {
       </section>
 
       {/* 利用フロー & CTA */}
-      <section id="contact" className="py-20 px-4 bg-gradient-to-br from-emerald-950/30 via-slate-800 to-blue-950/30 relative overflow-hidden">
+      <section id="contact" className="py-20 px-4 bg-white relative overflow-hidden">
+        {/* 背景画像 - 飛行機/旅 */}
+        <div 
+          className="absolute inset-0 opacity-10 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1920&q=80)',
+          }}
+        />
         {/* 装飾 */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl"></div>
         
         <div className="max-w-5xl mx-auto text-center relative z-10">
           <h2 className="text-4xl font-bold mb-12">
-            <span className="text-white">ご利用の</span>
+            <span className="text-gray-900">ご利用の</span>
             <span className="text-[#D4AF37]">流れ</span>
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
-            <div className="text-center">
+            <div className="text-center bg-gradient-to-br from-[#D4AF37]/5 to-yellow-500/5 rounded-2xl p-6 border-2 border-[#D4AF37]/20 hover:border-[#D4AF37] transition-all hover:scale-105 shadow-lg">
               <div className="w-16 h-16 bg-gradient-to-br from-[#D4AF37] to-yellow-600 text-black rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg shadow-[#D4AF37]/50">1</div>
-              <h3 className="text-white font-bold mb-2">求人チェック</h3>
-              <p className="text-gray-400 text-sm">気になる求人を探す</p>
+              <h3 className="text-gray-900 font-bold mb-2 text-lg">求人チェック</h3>
+              <p className="text-gray-700 text-sm">気になる求人を探す</p>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#D4AF37] to-yellow-600 text-black rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg shadow-[#D4AF37]/50">2</div>
-              <h3 className="text-white font-bold mb-2">LINE相談</h3>
-              <p className="text-gray-400 text-sm">気軽に質問・相談</p>
+            <div className="text-center bg-gradient-to-br from-emerald-500/5 to-teal-500/5 rounded-2xl p-6 border-2 border-emerald-500/20 hover:border-emerald-500 transition-all hover:scale-105 shadow-lg">
+              <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg shadow-emerald-500/50">2</div>
+              <h3 className="text-gray-900 font-bold mb-2 text-lg">LINE相談</h3>
+              <p className="text-gray-700 text-sm">気軽に質問・相談</p>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#D4AF37] to-yellow-600 text-black rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg shadow-[#D4AF37]/50">3</div>
-              <h3 className="text-white font-bold mb-2">マッチング</h3>
-              <p className="text-gray-400 text-sm">最適な求人をご紹介</p>
+            <div className="text-center bg-gradient-to-br from-blue-500/5 to-indigo-500/5 rounded-2xl p-6 border-2 border-blue-500/20 hover:border-blue-500 transition-all hover:scale-105 shadow-lg">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg shadow-blue-500/50">3</div>
+              <h3 className="text-gray-900 font-bold mb-2 text-lg">マッチング</h3>
+              <p className="text-gray-700 text-sm">最適な求人をご紹介</p>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#D4AF37] to-yellow-600 text-black rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg shadow-[#D4AF37]/50">4</div>
-              <h3 className="text-white font-bold mb-2">渡航</h3>
-              <p className="text-gray-400 text-sm">新しい挑戦へ</p>
+            <div className="text-center bg-gradient-to-br from-purple-500/5 to-pink-500/5 rounded-2xl p-6 border-2 border-purple-500/20 hover:border-purple-500 transition-all hover:scale-105 shadow-lg">
+              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg shadow-purple-500/50">4</div>
+              <h3 className="text-gray-900 font-bold mb-2 text-lg">渡航</h3>
+              <p className="text-gray-700 text-sm">新しい挑戦へ</p>
             </div>
           </div>
 
