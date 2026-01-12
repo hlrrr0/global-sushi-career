@@ -69,6 +69,9 @@ export default async function Home() {
             <span className="text-[#D4AF37]"> Career</span>
           </Link>
           <nav className="hidden md:flex gap-8">
+            <Link href="/about" className="text-gray-300 hover:text-[#D4AF37] transition-colors">
+              About
+            </Link>
             <a href="#areas" className="text-gray-300 hover:text-[#D4AF37] transition-colors">
               国から探す
             </a>
